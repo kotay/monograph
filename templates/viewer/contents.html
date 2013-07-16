@@ -1,0 +1,16 @@
+<h1>Contents</h1>
+<ol class='chapters'>
+  <% for chapter in book.chapters %>
+  <li>
+    <a href="<%= chapter.permalink %>.html"><%= chapter.title %></a>
+    <% unless chapter.sections.empty? %>
+    <ol type='i'>
+      <% for key, title in chapter.sections %>
+      <li><a href="<%=chapter.permalink%>.html#<%=key%>"><%=title%></a></li>
+      <% end %>
+    </ol>
+    <% end %>
+  </li>
+  <% end%>
+</ol>
+

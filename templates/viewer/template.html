@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title><%= page_title %></title>
+  <link rel="stylesheet" href="reset.css" type="text/css" />
+  <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+  <% if book.config['stylesheets'] %>
+    <% for document in book.config['stylesheets'] %>
+    <link rel="stylesheet" href="<%=document%>" type="text/css" />
+    <% end %>
+  <% end %>
+</head>
+<body>
+  <article class="book-reader">
+    <input type="checkbox" id="invert">
+    <input type="checkbox" id="fullscreen">
+
+    <label for="invert"></label>
+    <label for="fullscreen"></label>
+
+     
+    <header>
+      <a href="#home">Home</a>
+      <h1><a href="#"><%= book.title %></a></h1>
+      </header>
+    <nav>
+      <ul>
+        <li>
+        <% if previous_page %>
+          <a href='<%=previous_page.permalink%>.html'>&larr; <%=previous_page.title%></a>
+        <% end %>
+        </li>
+        <li><a href='contents.html'><%= book.title %></a></li>
+        <% if next_page %>
+        <li><a href='<%=next_page.permalink%>.html'><%=next_page.title%> &rarr;</a></li>
+        <% end %>
+      </ul>
+    </nav>
+      <section>
+      <div class="page">
+        <%= content %>
+      </div>
+      </section>
+  </article>
+</body>
+</html>
